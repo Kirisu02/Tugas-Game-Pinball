@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {   
     public AudioSource bgmAudioSource;
+    public GameObject sfxAudioSource;
 
 	private void Start()
 	{
@@ -16,8 +17,9 @@ public class AudioManager : MonoBehaviour
         bgmAudioSource.Play();
     }
 	
-	private void PlaySFX()
+	public void PlaySFX(Vector3 spawnPosition)
     {
+        GameObject.Instantiate(sfxAudioSource, spawnPosition, Quaternion.identity);
 
     }
 }
