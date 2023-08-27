@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-  public Transform dummyTarget;
+  public float returnTime;
+  public float followSpeed;
+  public float length;
+  public Transform target;
 
+  
   private Vector3 defaultPosition;
-  private Transform target;
+
+  
+
+  public bool hasTarget { get {return target != null; }}
 
     private void Start()
     {
@@ -16,38 +23,34 @@ public class CameraController : MonoBehaviour
     }
 
     private void Update()
-    {
-		// kita beri debug dulu dengan GetKey karena script ini masih tahap awal
-		if (Input.GetKey(KeyCode.Space))
-		{
-			// tiap pencet spasi, langsung jalanin Coroutine Move Position untuk testing saja
-			FocusAtTarget(dummyTarget);
-	    }
+    {    
+        if (hasTarget)
+        {
+          Vector3 targetToCameraDirection = transform.rotation * -Vector3.forward;
+          Vector3 targetPosition = target.position + (targetToCameraDirection * length);
+        
 
-        if (Input.GetKey(KeyCode.R))
-	    {
-		    GoBackToDefault();
-	    }
+          transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+        }
     }
 
-	// belum dipakai
-    private void FocusAtTarget(Transform targetTransform)
+    public void FollowTarget(Transform targetTransform, float targetLength)
     {
-		// ubah target
-		target = targetTransform;
+        StopAllCoroutines();
+		    target = targetTransform;
+        length = targetLength;
 
-		// disini perlu ditambahkan kalkulasi posisi kamera dari target
-		// dan fungsi untuk menggerakan kameranya
-        StartCoroutine(MovePosition(targetTransform.position, 5));
     }
 	
-	// belum dipakai
+
     public void GoBackToDefault()
     {
       target = null;
 
       // disini perlu ditambahkan fungsi untukmengggerakan ke posisi default
-      StartCoroutine(MovePosition(dummyTarget.position, 5));
+      StopAllCoroutines();
+      StartCoroutine(MovePosition(defaultPosition, returnTime));
+
     }
 
     private IEnumerator MovePosition(Vector3 target, float time)
@@ -66,8 +69,7 @@ public class CameraController : MonoBehaviour
           yield return new WaitForEndOfFrame();
         }
 			
-			// kalau proses pergerakan sudah selesai, kamera langsung dipaksa pindah
-			// ke posisi target tepatnya agar tidak bermasalah nantinya
+
         transform.position = target;
     }
 }

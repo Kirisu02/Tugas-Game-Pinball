@@ -209,13 +209,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838306638}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.08909686, y: 0, z: 0, w: 0.996023}
+  m_LocalPosition: {x: 0.4, y: 0.97, z: -5.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 10.2233, y: 0, z: 0}
 --- !u!114 &838306642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9229eb191ab9d9e47ac3c0c8aed8c24a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dummyTarget: {fileID: 1745961030}
+  returnTime: 1
+  followSpeed: 1
+  length: 5
+  target: {fileID: 0}
 --- !u!1 &1637443373
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 5f5d6a1e40f94004ab6cb8a27f5f3dc0
+  - enabled: 1
+    path: Assets/Scenes/Game_Utama.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
