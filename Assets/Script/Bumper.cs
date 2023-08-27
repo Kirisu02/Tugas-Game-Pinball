@@ -9,6 +9,7 @@ public class BumperController : MonoBehaviour
     public Color color;
 
     public AudioManager audioManager;
+    public VFXManager vfxManager;
 
     private Renderer renderer;
     private Animator animator;
@@ -33,6 +34,9 @@ public class BumperController : MonoBehaviour
 
             //playsfx
             audioManager.PlaySFX(collision.transform.position);
+
+            //playvfx
+            vfxManager.PlayVFX(collision.transform.position);
         }
     }
 
